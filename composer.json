@@ -15,7 +15,8 @@
         "issues": "http://github.com/innmind/ui/issues"
     },
     "require": {
-        "php": "~8.2"
+        "php": "~8.2",
+        "innmind/immutable": "~5.6"
     },
     "autoload": {
         "psr-4": {
