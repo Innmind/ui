@@ -8,7 +8,7 @@ use Innmind\Immutable\Sequence;
 /**
  * @psalm-immutable
  */
-final class Toobar implements View
+final class Toolbar implements View
 {
     private View $label;
     private ?View $leading;
