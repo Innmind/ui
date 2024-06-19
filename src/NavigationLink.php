@@ -47,6 +47,15 @@ final class NavigationLink implements View
         );
     }
 
+    public function selectedWhen(bool $selected): self
+    {
+        return new self(
+            $this->url,
+            $this->label,
+            $selected,
+        );
+    }
+
     public function render(): Sequence
     {
         return Lines::of(
