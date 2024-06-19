@@ -46,7 +46,7 @@ final class Group implements View
                 Indent::render(...),
                 $this->buttons,
             ),
-            '</div>',
+            ...['</div>'],
         );
     }
 }

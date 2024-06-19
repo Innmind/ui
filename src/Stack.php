@@ -54,7 +54,7 @@ final class Stack implements View
                 Indent::render(...),
                 $this->views,
             ),
-            '</div>',
+            ...['</div>'],
         );
     }
 }
