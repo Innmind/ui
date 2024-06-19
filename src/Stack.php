@@ -11,13 +11,13 @@ use Innmind\Immutable\Sequence;
 final class Stack implements View
 {
     private bool $horizontal;
-    /** @var non-empty-list<View> */
-    private array $views;
+    /** @var Sequence<View> */
+    private Sequence $views;
 
     /**
-     * @param non-empty-list<View> $views
+     * @param Sequence<View> $views
      */
-    private function __construct(bool $horizontal, array $views)
+    private function __construct(bool $horizontal, Sequence $views)
     {
         $this->horizontal = $horizontal;
         $this->views = $views;
@@ -29,7 +29,7 @@ final class Stack implements View
      */
     public static function horizontal(View $first, View $second, View ...$rest): self
     {
-        return new self(true, [$first, $second, ...$rest]);
+        return new self(true, Sequence::of($first, $second, ...$rest));
     }
 
     /**
@@ -38,7 +38,7 @@ final class Stack implements View
      */
     public static function vertical(View $first, View $second, View ...$rest): self
     {
-        return new self(false, [$first, $second, ...$rest]);
+        return new self(false, Sequence::of($first, $second, ...$rest));
     }
 
     public function render(): Sequence
@@ -50,10 +50,11 @@ final class Stack implements View
 
         return Lines::of(
             "<div class=\"$class\">",
-            ...\array_map(
-                Indent::render(...),
-                $this->views,
-            ),
+            ...$this
+                ->views
+                ->map(View\Container::of(...))
+                ->map(Indent::render(...))
+                ->toList(),
             ...['</div>'],
         );
     }

@@ -16,13 +16,13 @@ use Innmind\Immutable\Sequence;
  */
 final class Group implements View
 {
-    /** @var non-empty-list<Button> */
-    private array $buttons;
+    /** @var Sequence<Button> */
+    private Sequence $buttons;
 
     /**
-     * @param non-empty-list<Button> $buttons
+     * @param Sequence<Button> $buttons
      */
-    private function __construct(array $buttons)
+    private function __construct(Sequence $buttons)
     {
         $this->buttons = $buttons;
     }
@@ -35,17 +35,18 @@ final class Group implements View
         Button $first,
         Button ...$rest,
     ): self {
-        return new self([$first, ...$rest]);
+        return new self(Sequence::of($first, ...$rest));
     }
 
     public function render(): Sequence
     {
         return Lines::of(
             '<div class="button-group">',
-            ...\array_map(
-                Indent::render(...),
-                $this->buttons,
-            ),
+            ...$this
+                ->buttons
+                ->map(View\Container::of(...))
+                ->map(Indent::render(...))
+                ->toList(),
             ...['</div>'],
         );
     }
