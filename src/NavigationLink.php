@@ -13,13 +13,13 @@ final class NavigationLink implements View
 {
     private Url $url;
     private View $label;
-    private bool $active;
+    private bool $selected;
 
-    private function __construct(Url $url, View $label, bool $active)
+    private function __construct(Url $url, View $label, bool $selected)
     {
         $this->url = $url;
         $this->label = $label;
-        $this->active = $active;
+        $this->selected = $selected;
     }
 
     /**
@@ -38,7 +38,7 @@ final class NavigationLink implements View
         return new self($url, Text::of($label), false);
     }
 
-    public function active(): self
+    public function selected(): self
     {
         return new self(
             $this->url,
@@ -52,8 +52,8 @@ final class NavigationLink implements View
         return Lines::of(
             \sprintf(
                 '<a class="navigation-link %s" href="%s">',
-                match ($this->active) {
-                    true => 'active',
+                match ($this->selected) {
+                    true => 'selected',
                     false => '',
                 },
                 $this->url->toString(),
