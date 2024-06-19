@@ -32,6 +32,24 @@ final class Toolbar implements View
         return new self($label, null, null);
     }
 
+    public function leading(View $view): self
+    {
+        return new self(
+            $this->label,
+            $view,
+            $this->trailing,
+        );
+    }
+
+    public function trailing(View $view): self
+    {
+        return new self(
+            $this->label,
+            $this->leading,
+            $view,
+        );
+    }
+
     public function render(): Sequence
     {
         $lines = Lines::of(
