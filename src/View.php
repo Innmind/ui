@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content\Line;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -11,7 +12,7 @@ use Innmind\Immutable\Sequence;
 interface View
 {
     /**
-     * @return Sequence<string>
+     * @return Sequence<Line>
      */
     public function render(): Sequence;
 }

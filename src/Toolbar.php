@@ -34,44 +34,38 @@ final class Toobar implements View
 
     public function render(): Sequence
     {
-        $lines = Sequence::lazyStartingWith(
+        $lines = Lines::of(
             '<header>',
         );
 
         if ($this->leading) {
-            $lines = $lines
-                ->add('<div class="leading">')
-                ->append(
-                    $this
-                        ->leading
-                        ->render()
-                        ->map(static fn($line) => '    '.$line),
-                )
-                ->add('</div>');
+            $lines = $lines->append(
+                Lines::of(
+                    '<div class="leading">',
+                    Indent::render($this->leading),
+                    '</div>',
+                ),
+            );
         }
 
-        $lines = $lines
-            ->add('<div class="label">')
-            ->append(
-                $this
-                    ->label
-                    ->render()
-                    ->map(static fn($line) => '    '.$line),
-            )
-            ->add('</div>');
+        $lines = $lines->append(
+            Lines::of(
+                '<div class="label">',
+                Indent::render($this->label),
+                '</div>',
+            ),
+        );
 
         if ($this->trailing) {
-            $lines = $lines
-                ->add('<div class="trailing">')
-                ->append(
-                    $this
-                        ->trailing
-                        ->render()
-                        ->map(static fn($line) => '    '.$line),
-                )
-                ->add('</div>');
+            $lines = $lines->append(
+                Lines::of(
+                    '<div class="trailing">',
+                    Indent::render($this->trailing),
+                    '</div>',
+                ),
+            );
         }
 
-        return $lines->add('</header>');
+        return $lines->append(Lines::of('</header>'));
     }
 }

@@ -29,7 +29,7 @@ final class Window implements View
 
     public function render(): Sequence
     {
-        $lines = Sequence::lazyStartingWith(
+        $lines = Lines::of(
             '<!DOCTYPE html>',
             '<html>',
             '    <head>',
@@ -40,15 +40,15 @@ final class Window implements View
 
         if ($this->body) {
             $lines = $lines->append(
-                $this
-                    ->body
-                    ->render()
-                    ->map(static fn($line) => '    '.$line),
+                Indent::render($this->body),
             );
         }
 
-        return $lines
-            ->add('    </body>')
-            ->add('</html>');
+        return $lines->append(
+            Lines::of(
+                '    </body>',
+                '</html>',
+            ),
+        );
     }
 }
