@@ -39,7 +39,7 @@ final class Button implements View
     public function render(): Sequence
     {
         return Lines::of(
-            \sprintf('<a href="%s">', $this->url->toString()),
+            \sprintf('<a class="button" href="%s">', $this->url->toString()),
             Indent::render($this->label),
             '</a>',
         );
