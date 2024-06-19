@@ -13,11 +13,13 @@ final class Button implements View
 {
     private Url $url;
     private View $label;
+    private bool $selected;
 
-    private function __construct(Url $url, View $label)
+    private function __construct(Url $url, View $label, bool $selected)
     {
         $this->url = $url;
         $this->label = $label;
+        $this->selected = $selected;
     }
 
     /**
@@ -25,7 +27,7 @@ final class Button implements View
      */
     public static function of(Url $url, View $label): self
     {
-        return new self($url, $label);
+        return new self($url, $label, false);
     }
 
     /**
@@ -33,13 +35,29 @@ final class Button implements View
      */
     public static function text(Url $url, string $label): self
     {
-        return new self($url, Text::of($label));
+        return new self($url, Text::of($label), false);
+    }
+
+    public function selected(): self
+    {
+        return new self(
+            $this->url,
+            $this->label,
+            true,
+        );
     }
 
     public function render(): Sequence
     {
         return Lines::of(
-            \sprintf('<a class="button" href="%s">', $this->url->toString()),
+            \sprintf(
+                '<a class="button %s" href="%s">',
+                match ($this->selected) {
+                    true => 'selected',
+                    false => '',
+                },
+                $this->url->toString(),
+            ),
             Indent::render($this->label),
             '</a>',
         );
