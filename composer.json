@@ -1,0 +1,30 @@
+{
+    "name": "innmind/ui",
+    "type": "library",
+    "description": "",
+    "keywords": [],
+    "homepage": "http://github.com/innmind/ui",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Baptiste Langlade",
+            "email": "baptiste.langlade@hey.com"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/innmind/ui/issues"
+    },
+    "require": {
+        "php": "~8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Innmind\\UI\\": "src/"
+        }
+    },
+    "require-dev": {
+        "vimeo/psalm": "~5.13",
+        "innmind/black-box": "^5.6.1",
+        "innmind/coding-standard": "~2.0"
+    }
+}
