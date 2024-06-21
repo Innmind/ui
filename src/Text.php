@@ -31,6 +31,7 @@ final class Text implements View
 
     public function render(): Sequence
     {
+        // TODO sanitize
         return Sequence::of(Line::of(Str::of($this->text)));
     }
 }
