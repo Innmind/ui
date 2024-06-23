@@ -1,5 +1,6 @@
 :root {
-    --space-within: 10px 15px;
+    --space-within-y: 10px;
+    --space-within: var(--space-within-y) 15px;
     --gap: 10px 15px;
     --button-padding: 8px 6px;
     --compensate-button-padding: 0px -6px;
@@ -10,11 +11,13 @@
     --border: 1px solid var(--border-color);
     --picked-value: var(--border-color);
     --picked-value-active: rgb(94, 97, 97);
+    --active-navigation-link: rgb(8, 92, 202);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --toolbar-background: rgb(44, 45, 46);
+        --list-background: rgb(34, 36, 37);
         --text: rgb(235, 235, 235);
         --border-color: rgb(64, 65, 65);
     }
@@ -31,7 +34,22 @@ body {
 .vertical-stack {
     display: flex;
     flex-direction: column;
-    gap: var(--gap);
+    height: 100%;
+}
+
+.vertical-stack > .view:last-child,
+.vertical-stack > .view:last-child > * {
+    height: 100%;
+    overflow: clip;
+}
+
+.horizontal-stack {
+    width: 100%;
+}
+
+.horizontal-stack > .view:last-child,
+.horizontal-stack > .view:last-child > * {
+    width: 100%;
 }
 
 .horizontal-stack, header {
@@ -111,4 +129,25 @@ header:first-child {
 
 .button:hover {
     background-color: var(--border-color);
+}
+
+ul {
+    background-color: var(--list-background);
+    height: calc(100% - calc(var(--space-within-y) * 2));
+    list-style: none;
+    margin: 0;
+    overflow: scroll;
+    padding: var(--space-within);
+}
+
+.navigation-link {
+    color: var(--text);
+    border-radius: var(--corners);
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.navigation-link.selected {
+    background-color: var(--active-navigation-link);
 }
