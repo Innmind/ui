@@ -1,0 +1,114 @@
+:root {
+    --space-within: 10px 15px;
+    --gap: 10px 15px;
+    --button-padding: 8px 6px;
+    --compensate-button-padding: 0px -6px;
+    --toolbar-background: rgb(255, 255, 255);
+    --text: rgb(0, 0, 0);
+    --border-color: rgb(68, 71, 71);
+    --corners: 8px;
+    --border: 1px solid var(--border-color);
+    --picked-value: var(--border-color);
+    --picked-value-active: rgb(94, 97, 97);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --toolbar-background: rgb(44, 45, 46);
+        --text: rgb(235, 235, 235);
+        --border-color: rgb(64, 65, 65);
+    }
+}
+
+body {
+    color: var(--text);
+    font-family: system-ui;
+    height: 100vh;
+    margin: 0;
+    width: 100vw;
+}
+
+.vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.horizontal-stack, header {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap);
+}
+
+header {
+    background-color: var(--toolbar-background);
+    min-height: 40px;
+    padding: var(--space-within);
+}
+
+header .leading, header .label, header .trailing {
+    align-self: center;
+}
+
+header .label {
+    font-weight: 500;
+}
+
+header .trailing {
+    margin-left: auto;
+}
+
+header .trailing > .horizontal-stack > .view {
+    align-self: center;
+}
+
+header:first-child {
+    border-bottom: var(--border);
+}
+
+.picker {
+    display: flex;
+    border: var(--border);
+    border-radius: var(--corners);
+}
+
+.picker:hover {
+    background-color: var(--border-color);
+}
+
+.horizontal-stack > .view > .picker {
+    flex-direction: row;
+}
+
+.vertical-stack > .view > .picker {
+    flex-direction: column;
+}
+
+.picker > .value {
+    padding: var(--button-padding);
+    margin: var(--compensate-button-padding);
+}
+
+.picker > .selected .button {
+    background-color: var(--picked-value);
+}
+
+.picker:hover > .selected .button {
+    background-color: var(--picked-value-active);
+}
+
+.picker .button {
+    border: none;
+}
+
+.button {
+    border: var(--border);
+    border-radius: var(--corners);
+    color: var(--text);
+    text-decoration: none;
+    padding: var(--button-padding);
+}
+
+.button:hover {
+    background-color: var(--border-color);
+}
