@@ -4,6 +4,7 @@
     --gap: 10px 15px;
     --button-padding: 8px 6px;
     --compensate-button-padding: 0px -6px;
+    --body-background: rgb(255, 255, 255);
     --toolbar-background: rgb(255, 255, 255);
     --text: rgb(0, 0, 0);
     --border-color: rgb(68, 71, 71);
@@ -16,6 +17,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
+        --body-background: rgb(44, 45, 46);
         --toolbar-background: rgb(44, 45, 46);
         --list-background: rgb(34, 36, 37);
         --text: rgb(235, 235, 235);
@@ -24,6 +26,7 @@
 }
 
 body {
+    background-color: var(--body-background);
     color: var(--text);
     font-family: system-ui;
     height: 100vh;
