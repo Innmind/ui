@@ -27,14 +27,14 @@ final class Lines
         Sequence|string ...$rest,
     ): Sequence {
         $lines = match (true) {
-            \is_string($first) => Sequence::lazyStartingWith(Line::of(Str::of($first))),
+            \is_string($first) => Sequence::of(Line::of(Str::of($first))),
             default => $first,
         };
 
         foreach ($rest as $part) {
             $lines = match (true) {
                 \is_string($part) => $lines->add(Line::of(Str::of($part))),
-                default => $lines->append($part),
+                default => $part->prepend($lines),
             };
         }
 
