@@ -151,3 +151,7 @@ ul {
 .navigation-link.selected {
     background-color: var(--active-navigation-link);
 }
+
+.view:has(> .scrollview) {
+    overflow: scroll;
+}
