@@ -61,6 +61,7 @@ body {
 header {
     background-color: var(--toolbar-background);
     min-height: 40px;
+    overflow-x: scroll;
     padding: var(--space-within);
 }
 
@@ -117,13 +118,16 @@ header:first-child {
 
 .picker .button {
     border: none;
+    display: inline;
 }
 
 .button {
     border: var(--border);
     border-radius: var(--corners);
     color: var(--text);
+    display: inline-block;
     text-decoration: none;
+    text-wrap: nowrap;
     padding: var(--button-padding);
 }
 
