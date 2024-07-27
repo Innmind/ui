@@ -65,7 +65,7 @@ final class Window implements View
 
         if ($this->body) {
             $lines = $lines->append(
-                Indent::render($this->body),
+                Indent::lines(Indent::render($this->body)),
             );
         }
 
