@@ -1,7 +1,8 @@
 :root {
-    --space-within-y: 10px;
-    --space-within: var(--space-within-y) 15px;
-    --gap: 10px 15px;
+    --gap-y: 10px;
+    --gap-x: 15px;
+    --gap: var(--gap-y) var(--gap-x);
+    --space-within: var(--gap);
     --button-padding: 8px 6px;
     --compensate-button-padding: 0px -6px;
     --body-background: rgb(255, 255, 255);
@@ -140,7 +141,7 @@ header:first-child {
 
 ul {
     background-color: var(--list-background);
-    height: calc(100% - calc(var(--space-within-y) * 2));
+    height: calc(100% - calc(var(--gap-y) * 2));
     list-style: none;
     margin: 0;
     overflow: scroll;
@@ -177,4 +178,28 @@ ul {
 
 .center .horizontal-stack .view:last-child {
     width: auto;
+}
+
+.view:last-child > .grid {
+    overflow-y: scroll;
+}
+
+.grid {
+    box-sizing: border-box;
+    display: grid;
+    gap: calc(var(--gap-y)*2) calc(var(--gap-x)*2);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow-y: scroll;
+    padding: var(--gap);
+}
+
+.card {
+    border: var(--border);
+    border-radius: var(--corners);
+    padding: var(--gap);
+    text-align: center;
+}
+
+.card > .center > .navigation-link {
+    padding: 0;
 }
