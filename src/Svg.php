@@ -26,6 +26,14 @@ final class Svg implements View
         return new self($data);
     }
 
+    /**
+     * @param int<1, 100> $size
+     */
+    public function zoom(int $size): View
+    {
+        return Zoom::of($this, $size);
+    }
+
     public function render(): Sequence
     {
         return Lines::of(
