@@ -203,3 +203,11 @@ ul {
 .card > .center > .navigation-link {
     padding: 0;
 }
+
+.shape.cornered > * {
+    border-radius: var(--corners);
+}
+
+.shape.circle > * {
+    border-radius: 50%;
+}

@@ -26,6 +26,11 @@ final class Image implements View
         return new self($src);
     }
 
+    public function shape(Shape $shape): View
+    {
+        return $shape->wrap($this);
+    }
+
     public function render(): Sequence
     {
         return Lines::of(\sprintf(
