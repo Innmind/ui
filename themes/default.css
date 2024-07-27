@@ -159,3 +159,19 @@ ul {
 .view:has(> .scrollview) {
     overflow: scroll;
 }
+
+.center {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.center .horizontal-stack {
+    align-items: center;
+    justify-content: center;
+}
+
+.center .horizontal-stack .view:last-child {
+    width: auto;
+}
