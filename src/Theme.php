@@ -25,7 +25,7 @@ enum Theme
     public function load(Filesystem $filesystem): Maybe
     {
         return $filesystem
-            ->mount(Path::of(__DIR__.'/../themes/'))
+            ->mount(Path::of(\dirname(__DIR__).'/themes/'))
             ->get(Name::of(\sprintf(
                 '%s.css',
                 $this->name,
