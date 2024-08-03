@@ -53,7 +53,7 @@ final class Window implements View
 
         if ($this->style) {
             $lines = $lines->append(Lines::of(\sprintf(
-                '<link rel="stylesheet" href="%s" />',
+                '        <link rel="stylesheet" href="%s" />',
                 $this->style->toString(),
             ))->lines());
         }
