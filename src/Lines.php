@@ -15,6 +15,7 @@ use Innmind\Immutable\{
 final class Lines
 {
     /**
+     * @internal
      * @psalm-pure
      *
      * @param Sequence<Line>|string $first

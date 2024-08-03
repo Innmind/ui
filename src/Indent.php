@@ -12,6 +12,7 @@ use Innmind\Immutable\Sequence;
 final class Indent
 {
     /**
+     * @internal
      * @psalm-pure
      *
      * @return Sequence<Line>
@@ -22,6 +23,7 @@ final class Indent
     }
 
     /**
+     * @internal
      * @psalm-pure
      *
      * @param Sequence<Line> $lines
@@ -34,6 +36,7 @@ final class Indent
     }
 
     /**
+     * @internal
      * @psalm-pure
      */
     public static function line(Line $line): Line
