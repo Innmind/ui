@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -25,7 +25,7 @@ final class Card implements View
         return new self(Center::of($inner));
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<div class="card">',

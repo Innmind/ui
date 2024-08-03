@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Innmind\UI;
 
 use Innmind\Filesystem\File\Content;
-use Innmind\Immutable\Sequence;
 
 /**
  * @psalm-immutable
@@ -34,11 +33,11 @@ final class Svg implements View
         return Zoom::of($this, $size);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<div class="svg">',
-            $this->data->lines(),
+            $this->data,
             '</div>',
         );
     }

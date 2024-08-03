@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -31,19 +32,19 @@ final class Listing implements View
         return new self($elements);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<ul>',
-            Indent::lines(
+            Content::ofLines(Indent::lines(
                 $this->elements->flatMap(
                     static fn($view) => Lines::of(
                         '<li>',
                         Indent::render($view),
                         '</li>',
-                    ),
+                    )->lines(),
                 ),
-            ),
+            )),
             '</ul>',
         );
     }

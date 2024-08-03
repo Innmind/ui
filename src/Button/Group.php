@@ -9,6 +9,7 @@ use Innmind\UI\{
     Lines,
     Indent,
 };
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -38,7 +39,7 @@ final class Group implements View
         return new self(Sequence::of($first, ...$rest));
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<div class="button-group">',

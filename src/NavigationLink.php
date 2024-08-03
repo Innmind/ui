@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Url\Url;
-use Innmind\Immutable\Sequence;
 
 /**
  * @psalm-immutable
@@ -56,7 +56,7 @@ final class NavigationLink implements View
         );
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             \sprintf(

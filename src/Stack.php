@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -41,7 +42,7 @@ final class Stack implements View
         return new self(false, Sequence::of($first, $second, ...$rest));
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         $class = match ($this->horizontal) {
             true => 'horizontal-stack',

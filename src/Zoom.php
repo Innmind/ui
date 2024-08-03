@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -33,7 +33,7 @@ final class Zoom implements View
         return new self($inner, $size);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             \sprintf('<div style="zoom: %s%%">', $this->size),

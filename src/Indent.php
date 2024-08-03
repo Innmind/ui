@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Filesystem\File\Content\Line;
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -14,21 +14,28 @@ final class Indent
     /**
      * @internal
      * @psalm-pure
-     *
-     * @return Sequence<Line>
      */
-    public static function render(View $view): Sequence
+    public static function render(View $view): Content
     {
-        return self::lines($view->render());
+        return self::content($view->render());
+    }
+
+    /**
+     * @internal
+     * @psalm-pure
+     */
+    public static function content(Content $content): Content
+    {
+        return $content->map(self::line(...));
     }
 
     /**
      * @internal
      * @psalm-pure
      *
-     * @param Sequence<Line> $lines
+     * @param Sequence<Content\Line> $lines
      *
-     * @return Sequence<Line>
+     * @return Sequence<Content\Line>
      */
     public static function lines(Sequence $lines): Sequence
     {
@@ -39,7 +46,7 @@ final class Indent
      * @internal
      * @psalm-pure
      */
-    public static function line(Line $line): Line
+    public static function line(Content\Line $line): Content\Line
     {
         return $line->map(static fn($str) => $str->prepend('    '));
     }

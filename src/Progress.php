@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Filesystem\File\Content\Line;
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\{
     Sequence,
     Str,
@@ -26,7 +26,7 @@ final class Progress implements View
         return new self;
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         $svg = static fn(bool $black): string => \sprintf(
             <<<SVG
@@ -40,14 +40,14 @@ final class Progress implements View
 
         return Lines::of(
             '<picture>',
-            Sequence::of(
-                Indent::line(Line::of(Str::of('<source media="(prefers-color-scheme: dark)" srcset="data:image/svg+xml;base64,%s"/>')->sprintf(
+            Content::ofLines(Sequence::of(
+                Indent::line(Content\Line::of(Str::of('<source media="(prefers-color-scheme: dark)" srcset="data:image/svg+xml;base64,%s"/>')->sprintf(
                     \base64_encode($svg(true)),
                 ))),
-                Indent::line(Line::of(Str::of('<img src="data:image/svg+xml;base64,%s"/>')->sprintf(
+                Indent::line(Content\Line::of(Str::of('<img src="data:image/svg+xml;base64,%s"/>')->sprintf(
                     \base64_encode($svg(false)),
                 ))),
-            ),
+            )),
             '</picture>',
         );
     }

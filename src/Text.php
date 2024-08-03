@@ -3,11 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Filesystem\File\Content\Line;
-use Innmind\Immutable\{
-    Sequence,
-    Str,
-};
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -29,9 +25,9 @@ final class Text implements View
         return new self($text);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         // TODO sanitize
-        return Sequence::of(Line::of(Str::of($this->text)));
+        return Content::ofString($this->text);
     }
 }

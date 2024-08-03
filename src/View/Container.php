@@ -8,7 +8,7 @@ use Innmind\UI\{
     Indent,
     Lines,
 };
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -30,7 +30,7 @@ final class Container implements View
         return new self($view);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<div class="view">',

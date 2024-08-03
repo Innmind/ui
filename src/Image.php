@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 use Innmind\Url\Url;
 
 /**
@@ -31,7 +31,7 @@ final class Image implements View
         return $shape->wrap($this);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(\sprintf(
             '<img src="%s"/>',

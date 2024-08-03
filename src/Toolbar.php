@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -50,11 +50,11 @@ final class Toolbar implements View
         );
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         $lines = Lines::of(
             '<header>',
-        );
+        )->lines();
 
         if ($this->leading) {
             $lines = $lines->append(
@@ -62,7 +62,7 @@ final class Toolbar implements View
                     '<div class="leading">',
                     Indent::render($this->leading),
                     '</div>',
-                ),
+                )->lines(),
             );
         }
 
@@ -71,7 +71,7 @@ final class Toolbar implements View
                 '<div class="label">',
                 Indent::render($this->label),
                 '</div>',
-            ),
+            )->lines(),
         );
 
         if ($this->trailing) {
@@ -80,10 +80,10 @@ final class Toolbar implements View
                     '<div class="trailing">',
                     Indent::render($this->trailing),
                     '</div>',
-                ),
+                )->lines(),
             );
         }
 
-        return $lines->append(Lines::of('</header>'));
+        return Content::ofLines($lines->append(Lines::of('</header>')->lines()));
     }
 }

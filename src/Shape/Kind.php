@@ -8,7 +8,7 @@ use Innmind\UI\{
     Lines,
     Indent,
 };
-use Innmind\Immutable\Sequence;
+use Innmind\Filesystem\File\Content;
 
 /**
  * @psalm-immutable
@@ -40,7 +40,7 @@ final class Kind implements View
         return new self($inner, 'circle');
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             \sprintf(

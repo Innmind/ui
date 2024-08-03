@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -31,7 +32,7 @@ final class Grid implements View
         return new self($cards);
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             '<div class="grid">',

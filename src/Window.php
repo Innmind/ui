@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Url\Url;
-use Innmind\Immutable\Sequence;
 
 /**
  * @psalm-immutable
@@ -42,38 +42,38 @@ final class Window implements View
         );
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         $lines = Lines::of(
             '<!DOCTYPE html>',
             '<html>',
             '    <head>',
             '        <title>'.$this->title.'</title>',
-        );
+        )->lines();
 
         if ($this->style) {
             $lines = $lines->append(Lines::of(\sprintf(
                 '<link rel="stylesheet" href="%s" />',
                 $this->style->toString(),
-            )));
+            ))->lines());
         }
 
         $lines = $lines->append(Lines::of(
             '    </head>',
             '    <body>',
-        ));
+        )->lines());
 
         if ($this->body) {
             $lines = $lines->append(
-                Indent::lines(Indent::render($this->body)),
+                Indent::lines(Indent::render($this->body)->lines()),
             );
         }
 
-        return $lines->append(
+        return Content::ofLines($lines->append(
             Lines::of(
                 '    </body>',
                 '</html>',
-            ),
-        );
+            )->lines(),
+        ));
     }
 }

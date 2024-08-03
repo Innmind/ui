@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Innmind\UI;
 
+use Innmind\Filesystem\File\Content;
 use Innmind\Immutable\Sequence;
 
 /**
@@ -50,7 +51,7 @@ final class Picker implements View
         );
     }
 
-    public function render(): Sequence
+    public function render(): Content
     {
         return Lines::of(
             \sprintf(
