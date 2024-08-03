@@ -13,14 +13,19 @@ final class Picker implements View
     private \UnitEnum $selected;
     /** @var Sequence<Picker\Value> */
     private Sequence $values;
+    private bool $disable;
 
     /**
      * @param Sequence<Picker\Value> $values
      */
-    private function __construct(\UnitEnum $selected, Sequence $values)
-    {
+    private function __construct(
+        \UnitEnum $selected,
+        Sequence $values,
+        bool $disable,
+    ) {
         $this->selected = $selected;
         $this->values = $values;
+        $this->disable = $disable;
     }
 
     /**
@@ -29,13 +34,28 @@ final class Picker implements View
      */
     public static function of(\UnitEnum $selected, Picker\Value ...$values): self
     {
-        return new self($selected, Sequence::of(...$values));
+        return new self($selected, Sequence::of(...$values), false);
+    }
+
+    public function disableWhen(bool $disable): self
+    {
+        return new self(
+            $this->selected,
+            $this->values,
+            $disable,
+        );
     }
 
     public function render(): Sequence
     {
         return Lines::of(
-            '<div class="picker">',
+            \sprintf(
+                '<div class="picker %s">',
+                match ($this->disable) {
+                    true => 'disabled',
+                    false => '',
+                },
+            ),
             ...$this
                 ->values
                 ->map(fn($value) => Lines::of(

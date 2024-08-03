@@ -95,7 +95,12 @@ header:first-child {
     border-radius: var(--corners);
 }
 
-.picker:hover {
+.picker.disabled a {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.picker:not(.disabled):hover {
     background-color: var(--border-color);
 }
 
@@ -112,11 +117,11 @@ header:first-child {
     margin: var(--compensate-button-padding);
 }
 
-.picker > .selected .button {
+.picker:not(.disabled) > .selected .button {
     background-color: var(--picked-value);
 }
 
-.picker:hover > .selected .button {
+.picker:not(.disabled):hover > .selected .button {
     background-color: var(--picked-value-active);
 }
 
