@@ -31,6 +31,10 @@ final class Picker implements View
     /**
      * @psalm-pure
      * @no-named-arguments
+     * @template A of \UnitEnum
+     *
+     * @param A $selected
+     * @param Picker\Value<A> $values
      */
     public static function of(\UnitEnum $selected, Picker\Value ...$values): self
     {
