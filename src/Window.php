@@ -48,7 +48,7 @@ final class Window implements View
             '<!DOCTYPE html>',
             '<html>',
             '    <head>',
-            '        <title>'.$this->title.'</title>',
+            '        <title>'.Text::escape($this->title).'</title>',
         )->lines();
 
         if ($this->style) {
