@@ -185,10 +185,11 @@ ul {
 }
 
 .grid {
+    align-content: flex-start;
     box-sizing: border-box;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: calc(var(--gap-y)*2) calc(var(--gap-x)*2);
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     overflow-y: scroll;
     padding: var(--gap);
 }
@@ -198,6 +199,7 @@ ul {
     border-radius: var(--corners);
     padding: var(--gap);
     text-align: center;
+    width: min-content;
 }
 
 .card > .center > .navigation-link {
