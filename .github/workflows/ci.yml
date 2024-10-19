@@ -12,7 +12,7 @@ jobs:
     name: 'Psalm'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -20,7 +20,7 @@ jobs:
           extensions: mbstring, intl
           coverage: none
       - name: Composer
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: ${{ matrix.dependencies }}
       - name: Psalm
@@ -33,7 +33,7 @@ jobs:
     name: 'CS'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -41,6 +41,6 @@ jobs:
           extensions: mbstring, intl
           coverage: none
       - name: Composer
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
       - name: CS
         run: vendor/bin/php-cs-fixer fix --diff --dry-run
