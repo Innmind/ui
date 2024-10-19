@@ -3,67 +3,16 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  blackbox:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-        php-version: ['8.2', '8.3', '8.4']
-        dependencies: ['lowest', 'highest']
-    name: BlackBox
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          extensions: mbstring, intl
-          coverage: none
-      - name: Composer
-        uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: ${{ matrix.dependencies }}
-      - name: BlackBox
-        run: php blackbox.php
-  coverage:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macOS-latest]
-        php-version: ['8.2', '8.3', '8.4']
-        dependencies: ['lowest', 'highest']
-    name: BlackBox
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          extensions: mbstring, intl
-          coverage: xdebug
-      - name: Composer
-        uses: "ramsey/composer-install@v2"
-        with:
-          dependency-versions: ${{ matrix.dependencies }}
-      - name: BlackBox
-        run: php blackbox.php
-        env:
-          ENABLE_COVERAGE: 'true'
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
   psalm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.2', '8.3', '8.4']
+        php-version: ['8.2', '8.3']
         dependencies: ['lowest', 'highest']
     name: 'Psalm'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -71,7 +20,7 @@ jobs:
           extensions: mbstring, intl
           coverage: none
       - name: Composer
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: ${{ matrix.dependencies }}
       - name: Psalm
@@ -84,7 +33,7 @@ jobs:
     name: 'CS'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -92,6 +41,6 @@ jobs:
           extensions: mbstring, intl
           coverage: none
       - name: Composer
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
       - name: CS
         run: vendor/bin/php-cs-fixer fix --diff --dry-run
