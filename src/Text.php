@@ -38,6 +38,7 @@ final class Text implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Content::ofString(self::escape($this->text));

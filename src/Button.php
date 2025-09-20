@@ -56,6 +56,7 @@ final class Button implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

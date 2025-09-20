@@ -33,6 +33,7 @@ final class Svg implements View
         return Zoom::of($this, $size);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

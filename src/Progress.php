@@ -26,6 +26,7 @@ final class Progress implements View
         return new self;
     }
 
+    #[\Override]
     public function render(): Content
     {
         $svg = static fn(bool $black): string => \sprintf(

@@ -25,6 +25,7 @@ final class Card implements View
         return new self(Center::of($inner));
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

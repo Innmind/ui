@@ -16,10 +16,7 @@
     },
     "require": {
         "php": "~8.2",
-        "innmind/immutable": "~5.7",
-        "innmind/filesystem": "~7.5",
-        "innmind/url": "~4.3",
-        "innmind/operating-system": "~5.2"
+        "innmind/foundation": "~1.9"
     },
     "autoload": {
         "psr-4": {
@@ -27,7 +24,7 @@
         }
     },
     "require-dev": {
-        "vimeo/psalm": "~5.13",
+        "innmind/static-analysis": "^1.2.1",
         "innmind/coding-standard": "~2.0"
     }
 }

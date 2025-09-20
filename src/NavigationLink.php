@@ -56,6 +56,7 @@ final class NavigationLink implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

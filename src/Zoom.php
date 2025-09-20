@@ -33,6 +33,7 @@ final class Zoom implements View
         return new self($inner, $size);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(
