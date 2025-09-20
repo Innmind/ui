@@ -51,6 +51,7 @@ final class Picker implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

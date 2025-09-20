@@ -31,6 +31,7 @@ final class Image implements View
         return $shape->wrap($this);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(\sprintf(

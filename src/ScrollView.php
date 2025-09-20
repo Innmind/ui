@@ -25,6 +25,7 @@ final class ScrollView implements View
         return new self($inner);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

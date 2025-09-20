@@ -32,6 +32,7 @@ final class Listing implements View
         return new self($elements);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

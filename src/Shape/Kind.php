@@ -40,6 +40,7 @@ final class Kind implements View
         return new self($inner, 'circle');
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(
