@@ -28,7 +28,7 @@ final class Window implements View
     /**
      * @psalm-pure
      */
-    public static function of(string $title, View $body = null): self
+    public static function of(string $title, ?View $body = null): self
     {
         return new self($title, $body, null);
     }
