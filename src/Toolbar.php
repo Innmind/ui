@@ -50,6 +50,7 @@ final class Toolbar implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         $lines = Lines::of(

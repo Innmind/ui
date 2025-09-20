@@ -30,6 +30,7 @@ final class Container implements View
         return new self($view);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(

@@ -42,6 +42,7 @@ final class Stack implements View
         return new self(false, Sequence::of($first, $second, ...$rest));
     }
 
+    #[\Override]
     public function render(): Content
     {
         $class = match ($this->horizontal) {

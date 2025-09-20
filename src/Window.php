@@ -42,6 +42,7 @@ final class Window implements View
         );
     }
 
+    #[\Override]
     public function render(): Content
     {
         $lines = Lines::of(

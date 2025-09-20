@@ -32,6 +32,7 @@ final class Grid implements View
         return new self($cards);
     }
 
+    #[\Override]
     public function render(): Content
     {
         return Lines::of(
