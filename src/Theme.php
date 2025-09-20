@@ -26,10 +26,11 @@ enum Theme
     {
         return $filesystem
             ->mount(Path::of(\dirname(__DIR__).'/themes/'))
-            ->get(Name::of(\sprintf(
+            ->maybe()
+            ->flatMap(fn($adapter) => $adapter->get(Name::of(\sprintf(
                 '%s.css',
                 $this->name,
-            )))
+            ))))
             ->keep(Instance::of(File::class))
             ->map(static fn($file) => $file->content());
     }
