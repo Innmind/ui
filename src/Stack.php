@@ -11,17 +11,13 @@ use Innmind\Immutable\Sequence;
  */
 final class Stack implements View
 {
-    private bool $horizontal;
-    /** @var Sequence<View> */
-    private Sequence $views;
-
     /**
      * @param Sequence<View> $views
      */
-    private function __construct(bool $horizontal, Sequence $views)
-    {
-        $this->horizontal = $horizontal;
-        $this->views = $views;
+    private function __construct(
+        private bool $horizontal,
+        private Sequence $views,
+    ) {
     }
 
     /**

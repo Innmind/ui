@@ -11,17 +11,13 @@ use Innmind\UI\View;
  */
 final class Value
 {
-    /** @var T */
-    private \UnitEnum $tag;
-    private View $view;
-
     /**
      * @param T $tag
      */
-    private function __construct(\UnitEnum $tag, View $view)
-    {
-        $this->tag = $tag;
-        $this->view = $view;
+    private function __construct(
+        private \UnitEnum $tag,
+        private View $view,
+    ) {
     }
 
     /**

@@ -11,11 +11,8 @@ use Innmind\Url\Url;
  */
 final class Image implements View
 {
-    private Url $src;
-
-    private function __construct(Url $src)
+    private function __construct(private Url $src)
     {
-        $this->src = $src;
     }
 
     /**
