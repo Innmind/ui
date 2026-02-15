@@ -17,6 +17,7 @@ final class Card implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(View $inner): self
     {
         return new self(Center::of($inner));

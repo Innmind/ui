@@ -17,6 +17,7 @@ final class Text implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(string $text): self
     {
         return new self($text);

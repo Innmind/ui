@@ -22,6 +22,7 @@ final class Container implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(View $view): self
     {
         return new self($view);

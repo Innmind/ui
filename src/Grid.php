@@ -23,6 +23,7 @@ final class Grid implements View
      *
      * @param Sequence<Card> $cards
      */
+    #[\NoDiscard]
     public static function of(Sequence $cards): self
     {
         return new self($cards);

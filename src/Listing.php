@@ -23,6 +23,7 @@ final class Listing implements View
      *
      * @param Sequence<View> $elements
      */
+    #[\NoDiscard]
     public static function of(Sequence $elements): self
     {
         return new self($elements);

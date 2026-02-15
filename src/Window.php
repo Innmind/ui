@@ -21,11 +21,13 @@ final class Window implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(string $title, ?View $body = null): self
     {
         return new self($title, $body, null);
     }
 
+    #[\NoDiscard]
     public function stylesheet(Url $url): self
     {
         return new self(

@@ -21,6 +21,7 @@ final class Button implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(Url $url, View $label): self
     {
         return new self($url, $label, false);
@@ -29,11 +30,13 @@ final class Button implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function text(Url $url, string $label): self
     {
         return new self($url, Text::of($label), false);
     }
 
+    #[\NoDiscard]
     public function selected(): self
     {
         return new self(
@@ -43,6 +46,7 @@ final class Button implements View
         );
     }
 
+    #[\NoDiscard]
     public function selectedWhen(bool $selected): self
     {
         return new self(
