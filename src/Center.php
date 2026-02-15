@@ -10,11 +10,8 @@ use Innmind\Filesystem\File\Content;
  */
 final class Center implements View
 {
-    private View $inner;
-
-    private function __construct(View $inner)
+    private function __construct(private View $inner)
     {
-        $this->inner = $inner;
     }
 
     /**

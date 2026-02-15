@@ -11,18 +11,11 @@ use Innmind\Url\Url;
  */
 final class Window implements View
 {
-    private string $title;
-    private ?View $body;
-    private ?Url $style;
-
     private function __construct(
-        string $title,
-        ?View $body,
-        ?Url $style,
+        private string $title,
+        private ?View $body,
+        private ?Url $style,
     ) {
-        $this->title = $title;
-        $this->body = $body;
-        $this->style = $style;
     }
 
     /**

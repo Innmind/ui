@@ -10,17 +10,13 @@ use Innmind\Filesystem\File\Content;
  */
 final class Zoom implements View
 {
-    private View $inner;
-    /** @var int<1, 100> */
-    private int $size;
-
     /**
      * @param int<1, 100> $size
      */
-    private function __construct(View $inner, int $size)
-    {
-        $this->inner = $inner;
-        $this->size = $size;
+    private function __construct(
+        private View $inner,
+        private int $size,
+    ) {
     }
 
     /**

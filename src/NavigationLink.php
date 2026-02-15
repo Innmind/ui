@@ -11,15 +11,11 @@ use Innmind\Url\Url;
  */
 final class NavigationLink implements View
 {
-    private Url $url;
-    private View $label;
-    private bool $selected;
-
-    private function __construct(Url $url, View $label, bool $selected)
-    {
-        $this->url = $url;
-        $this->label = $label;
-        $this->selected = $selected;
+    private function __construct(
+        private Url $url,
+        private View $label,
+        private bool $selected,
+    ) {
     }
 
     /**

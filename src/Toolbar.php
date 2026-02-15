@@ -10,18 +10,11 @@ use Innmind\Filesystem\File\Content;
  */
 final class Toolbar implements View
 {
-    private View $label;
-    private ?View $leading;
-    private ?View $trailing;
-
     private function __construct(
-        View $label,
-        ?View $leading,
-        ?View $trailing,
+        private View $label,
+        private ?View $leading,
+        private ?View $trailing,
     ) {
-        $this->label = $label;
-        $this->leading = $leading;
-        $this->trailing = $trailing;
     }
 
     /**

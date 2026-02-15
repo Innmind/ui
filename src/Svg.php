@@ -10,11 +10,8 @@ use Innmind\Filesystem\File\Content;
  */
 final class Svg implements View
 {
-    private Content $data;
-
-    private function __construct(Content $data)
+    private function __construct(private Content $data)
     {
-        $this->data = $data;
     }
 
     /**
