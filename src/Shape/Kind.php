@@ -15,18 +15,16 @@ use Innmind\Filesystem\File\Content;
  */
 final class Kind implements View
 {
-    private View $inner;
-    private string $kind;
-
-    private function __construct(View $inner, string $kind)
-    {
-        $this->inner = $inner;
-        $this->kind = $kind;
+    private function __construct(
+        private View $inner,
+        private string $kind,
+    ) {
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function cornered(View $inner): self
     {
         return new self($inner, 'cornered');
@@ -35,6 +33,7 @@ final class Kind implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function circle(View $inner): self
     {
         return new self($inner, 'circle');

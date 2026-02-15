@@ -11,15 +11,11 @@ use Innmind\Immutable\Sequence;
  */
 final class Listing implements View
 {
-    /** @var Sequence<View> */
-    private Sequence $elements;
-
     /**
      * @param Sequence<View> $elements
      */
-    private function __construct(Sequence $elements)
+    private function __construct(private Sequence $elements)
     {
-        $this->elements = $elements;
     }
 
     /**
@@ -27,6 +23,7 @@ final class Listing implements View
      *
      * @param Sequence<View> $elements
      */
+    #[\NoDiscard]
     public static function of(Sequence $elements): self
     {
         return new self($elements);

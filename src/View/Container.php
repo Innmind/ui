@@ -15,16 +15,14 @@ use Innmind\Filesystem\File\Content;
  */
 final class Container implements View
 {
-    private View $view;
-
-    private function __construct(View $view)
+    private function __construct(private View $view)
     {
-        $this->view = $view;
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(View $view): self
     {
         return new self($view);

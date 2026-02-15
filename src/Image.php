@@ -11,21 +11,20 @@ use Innmind\Url\Url;
  */
 final class Image implements View
 {
-    private Url $src;
-
-    private function __construct(Url $src)
+    private function __construct(private Url $src)
     {
-        $this->src = $src;
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(Url $src): self
     {
         return new self($src);
     }
 
+    #[\NoDiscard]
     public function shape(Shape $shape): View
     {
         return $shape->wrap($this);

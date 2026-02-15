@@ -11,17 +11,13 @@ use Innmind\UI\View;
  */
 final class Value
 {
-    /** @var T */
-    private \UnitEnum $tag;
-    private View $view;
-
     /**
      * @param T $tag
      */
-    private function __construct(\UnitEnum $tag, View $view)
-    {
-        $this->tag = $tag;
-        $this->view = $view;
+    private function __construct(
+        private \UnitEnum $tag,
+        private View $view,
+    ) {
     }
 
     /**
@@ -32,16 +28,19 @@ final class Value
      *
      * @return self<A>
      */
+    #[\NoDiscard]
     public static function of(\UnitEnum $tag, View $view): self
     {
         return new self($tag, $view);
     }
 
+    #[\NoDiscard]
     public function tag(): \UnitEnum
     {
         return $this->tag;
     }
 
+    #[\NoDiscard]
     public function view(): View
     {
         return $this->view;

@@ -10,28 +10,23 @@ use Innmind\Filesystem\File\Content;
  */
 final class Toolbar implements View
 {
-    private View $label;
-    private ?View $leading;
-    private ?View $trailing;
-
     private function __construct(
-        View $label,
-        ?View $leading,
-        ?View $trailing,
+        private View $label,
+        private ?View $leading,
+        private ?View $trailing,
     ) {
-        $this->label = $label;
-        $this->leading = $leading;
-        $this->trailing = $trailing;
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(View $label): self
     {
         return new self($label, null, null);
     }
 
+    #[\NoDiscard]
     public function leading(View $view): self
     {
         return new self(
@@ -41,6 +36,7 @@ final class Toolbar implements View
         );
     }
 
+    #[\NoDiscard]
     public function trailing(View $view): self
     {
         return new self(

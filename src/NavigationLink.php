@@ -11,20 +11,17 @@ use Innmind\Url\Url;
  */
 final class NavigationLink implements View
 {
-    private Url $url;
-    private View $label;
-    private bool $selected;
-
-    private function __construct(Url $url, View $label, bool $selected)
-    {
-        $this->url = $url;
-        $this->label = $label;
-        $this->selected = $selected;
+    private function __construct(
+        private Url $url,
+        private View $label,
+        private bool $selected,
+    ) {
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(Url $url, View $label): self
     {
         return new self($url, $label, false);
@@ -33,11 +30,13 @@ final class NavigationLink implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function text(Url $url, string $label): self
     {
         return new self($url, Text::of($label), false);
     }
 
+    #[\NoDiscard]
     public function selected(): self
     {
         return new self(
@@ -47,6 +46,7 @@ final class NavigationLink implements View
         );
     }
 
+    #[\NoDiscard]
     public function selectedWhen(bool $selected): self
     {
         return new self(

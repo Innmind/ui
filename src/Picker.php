@@ -11,22 +11,14 @@ use Innmind\Immutable\Sequence;
  */
 final class Picker implements View
 {
-    private \UnitEnum $selected;
-    /** @var Sequence<Picker\Value> */
-    private Sequence $values;
-    private bool $disable;
-
     /**
      * @param Sequence<Picker\Value> $values
      */
     private function __construct(
-        \UnitEnum $selected,
-        Sequence $values,
-        bool $disable,
+        private \UnitEnum $selected,
+        private Sequence $values,
+        private bool $disable,
     ) {
-        $this->selected = $selected;
-        $this->values = $values;
-        $this->disable = $disable;
     }
 
     /**
@@ -37,11 +29,13 @@ final class Picker implements View
      * @param A $selected
      * @param Picker\Value<A> $values
      */
+    #[\NoDiscard]
     public static function of(\UnitEnum $selected, Picker\Value ...$values): self
     {
         return new self($selected, Sequence::of(...$values), false);
     }
 
+    #[\NoDiscard]
     public function disableWhen(bool $disable): self
     {
         return new self(

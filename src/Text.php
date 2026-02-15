@@ -10,16 +10,14 @@ use Innmind\Filesystem\File\Content;
  */
 final class Text implements View
 {
-    private string $text;
-
-    private function __construct(string $text)
+    private function __construct(private string $text)
     {
-        $this->text = $text;
     }
 
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(string $text): self
     {
         return new self($text);

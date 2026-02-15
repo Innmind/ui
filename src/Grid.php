@@ -11,15 +11,11 @@ use Innmind\Immutable\Sequence;
  */
 final class Grid implements View
 {
-    /** @var Sequence<Card> */
-    private Sequence $cards;
-
     /**
      * @param Sequence<Card> $cards
      */
-    private function __construct(Sequence $cards)
+    private function __construct(private Sequence $cards)
     {
-        $this->cards = $cards;
     }
 
     /**
@@ -27,6 +23,7 @@ final class Grid implements View
      *
      * @param Sequence<Card> $cards
      */
+    #[\NoDiscard]
     public static function of(Sequence $cards): self
     {
         return new self($cards);
