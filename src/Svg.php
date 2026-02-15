@@ -17,6 +17,7 @@ final class Svg implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(Content $data): self
     {
         return new self($data);
@@ -25,6 +26,7 @@ final class Svg implements View
     /**
      * @param int<1, 100> $size
      */
+    #[\NoDiscard]
     public function zoom(int $size): View
     {
         return Zoom::of($this, $size);

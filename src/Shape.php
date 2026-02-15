@@ -11,6 +11,7 @@ enum Shape
     case cornered;
     case circle;
 
+    #[\NoDiscard]
     public function wrap(View $view): View
     {
         return match ($this) {

@@ -29,11 +29,13 @@ final class Picker implements View
      * @param A $selected
      * @param Picker\Value<A> $values
      */
+    #[\NoDiscard]
     public static function of(\UnitEnum $selected, Picker\Value ...$values): self
     {
         return new self($selected, Sequence::of(...$values), false);
     }
 
+    #[\NoDiscard]
     public function disableWhen(bool $disable): self
     {
         return new self(

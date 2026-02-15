@@ -21,6 +21,7 @@ final class Progress implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function new(): self
     {
         return new self;

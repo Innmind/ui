@@ -22,6 +22,7 @@ enum Theme
     /**
      * @return Maybe<Content>
      */
+    #[\NoDiscard]
     public function load(Filesystem $filesystem): Maybe
     {
         return $filesystem

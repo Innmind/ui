@@ -24,6 +24,7 @@ final class Kind implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function cornered(View $inner): self
     {
         return new self($inner, 'cornered');
@@ -32,6 +33,7 @@ final class Kind implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function circle(View $inner): self
     {
         return new self($inner, 'circle');

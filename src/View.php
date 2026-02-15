@@ -10,5 +10,6 @@ use Innmind\Filesystem\File\Content;
  */
 interface View
 {
+    #[\NoDiscard]
     public function render(): Content;
 }

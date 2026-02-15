@@ -24,6 +24,7 @@ final class Stack implements View
      * @psalm-pure
      * @no-named-arguments
      */
+    #[\NoDiscard]
     public static function horizontal(View $first, View $second, View ...$rest): self
     {
         return new self(true, Sequence::of($first, $second, ...$rest));
@@ -33,6 +34,7 @@ final class Stack implements View
      * @psalm-pure
      * @no-named-arguments
      */
+    #[\NoDiscard]
     public static function vertical(View $first, View $second, View ...$rest): self
     {
         return new self(false, Sequence::of($first, $second, ...$rest));

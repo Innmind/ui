@@ -20,11 +20,13 @@ final class Toolbar implements View
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(View $label): self
     {
         return new self($label, null, null);
     }
 
+    #[\NoDiscard]
     public function leading(View $view): self
     {
         return new self(
@@ -34,6 +36,7 @@ final class Toolbar implements View
         );
     }
 
+    #[\NoDiscard]
     public function trailing(View $view): self
     {
         return new self(

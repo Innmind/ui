@@ -24,6 +24,7 @@ final class Zoom implements View
      *
      * @param int<1, 100> $size
      */
+    #[\NoDiscard]
     public static function of(View $inner, int $size): self
     {
         return new self($inner, $size);
