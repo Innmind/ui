@@ -1,6 +1,6 @@
 # UI
 
-[![Build Status](https://github.com/innmind/ui/workflows/CI/badge.svg?branch=main)](https://github.com/innmind/ui/actions?query=workflow%3ACI)
+[![CI](https://github.com/Innmind/ui/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Innmind/ui/actions/workflows/ci.yml)
 [![Type Coverage](https://shepherd.dev/github/innmind/ui/coverage.svg)](https://shepherd.dev/github/innmind/ui)
 
 Build web pages by composing PHP components instead of writing HTML.
